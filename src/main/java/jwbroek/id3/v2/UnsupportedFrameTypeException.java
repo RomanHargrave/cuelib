@@ -18,30 +18,23 @@
  */
 package jwbroek.id3.v2;
 
-public class UnsupportedFrameTypeException extends RuntimeException
-{
-  /**
-   * 
-   */
-  private static final long serialVersionUID = -1545143968507887751L;
+public class UnsupportedFrameTypeException extends RuntimeException {
 
-  public UnsupportedFrameTypeException()
-  {
-    super();
-  }
-  
-  public UnsupportedFrameTypeException(final Exception e)
-  {
-    super(e);
-  }
+    private static final long serialVersionUID = -1545143968507887751L;
 
-  public UnsupportedFrameTypeException(final String message)
-  {
-    super(message);
-  }
-  
-  public UnsupportedFrameTypeException(final String message, final Exception e)
-  {
-    super(message, e);
-  }
+    public UnsupportedFrameTypeException() {
+        super();
+    }
+
+    public UnsupportedFrameTypeException(final Exception e) {
+        super(e);
+    }
+
+    public UnsupportedFrameTypeException(final String message) {
+        super(message);
+    }
+
+    public UnsupportedFrameTypeException(final String message, final Exception e) {
+        super(message, e);
+    }
 }
