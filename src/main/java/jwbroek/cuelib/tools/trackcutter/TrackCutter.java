@@ -20,7 +20,6 @@ package jwbroek.cuelib.tools.trackcutter;
 
 import jwbroek.cuelib.*;
 import jwbroek.io.StreamPiper;
-import jwbroek.util.LogUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -134,7 +133,9 @@ public class TrackCutter {
         for (FileData fileData : cueSheet.getFileData()) {
             try {
                 cutTracksInFileData(fileData);
-            } catch (UnsupportedAudioFileException | IOException e) {
+            } catch (UnsupportedAudioFileException e) {
+                TrackCutter.logger.error("Encountered an {} when processing \"{}\": {}", e.getClass().getCanonicalName(), fileData.getFile(), e.getMessage(), e);
+            } catch (IOException e) {
                 TrackCutter.logger.error("Encountered an {} when processing \"{}\": {}", e.getClass().getCanonicalName(), fileData.getFile(), e.getMessage(), e);
             }
         }

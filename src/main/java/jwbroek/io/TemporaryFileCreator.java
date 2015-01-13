@@ -18,7 +18,6 @@
  */
 package jwbroek.io;
 
-import jwbroek.util.LogUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

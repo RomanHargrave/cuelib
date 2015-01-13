@@ -38,7 +38,7 @@ public class FileData {
     /**
      * The track data for this file data.
      */
-    private final List<TrackData> trackData = new ArrayList<>();
+    private final List<TrackData> trackData = new ArrayList<TrackData>();
     /**
      * The file for this file data. May be null, though this is not compliant.
      */

@@ -21,7 +21,6 @@ package jwbroek.cuelib.tools.trackcutter;
 import jwbroek.cuelib.Position;
 import jwbroek.cuelib.tools.trackcutter.TrackCutterConfiguration.PregapHandling;
 import jwbroek.io.FileSelector;
-import jwbroek.util.LogUtil;
 import jwbroek.util.SimpleOptionsParser;
 import jwbroek.util.properties.EnhancedProperties;
 import org.slf4j.Logger;

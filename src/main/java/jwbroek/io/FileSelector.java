@@ -109,7 +109,9 @@ final public class FileSelector {
                 boolean result;
                 try {
                     result = pattern.matcher(file.getCanonicalPath()).matches();
-                } catch (IOException | SecurityException e) {
+                } catch (SecurityException e) {
+                    result = false;
+                } catch (IOException e) {
                     result = false;
                 }
                 FileSelector.logger.debug("PathPatternFilter {} '{}'.", (result ? "accepted " : "did not accept '"), file.toString());
@@ -281,7 +283,7 @@ final public class FileSelector {
      * @return A list of files such that they match the pattern.
      */
     public static List<File> selectFiles(final File baseFile, final Pattern pattern, final long recurseDepth, final boolean considerBaseFile, final boolean keepGoing) {
-        List<File> fileList = new ArrayList<>();
+        List<File> fileList = new ArrayList<File>();
 
         selectFiles(baseFile, getPathPatternFilter(pattern), fileList, recurseDepth, considerBaseFile, keepGoing);
 
