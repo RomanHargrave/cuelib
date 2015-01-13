@@ -286,7 +286,7 @@ public class FileSelectorTest
     final FileFilter filesFilter = FileSelector.getFilesFilter();
     final FileFilter pathPatternFilter = FileSelector.getPathPatternFilter
       (FileSelectorTest.getParentDirNameAsFileNamePattern());
-    final FileFilter combinedFileFilter = FileSelector.getCombinedFileFilter(filesFilter, pathPatternFilter);
+    final FileFilter combinedFileFilter = FileSelector.getIntersectionFileFilter(filesFilter, pathPatternFilter);
     final Set<File> prediction = new HashSet<File>();
     prediction.add(new File(this.testRoot, this.testRoot.getName() + "file"));
     testFileFilter
@@ -307,7 +307,7 @@ public class FileSelectorTest
     final List<FileFilter> fileFilterList = new ArrayList<FileFilter>();
     fileFilterList.add(filesFilter);
     fileFilterList.add(pathPatternFilter);
-    final FileFilter combinedFileFilter = FileSelector.getCombinedFileFilter(fileFilterList);
+    final FileFilter combinedFileFilter = FileSelector.getIntersectionFileFilter(fileFilterList);
     final Set<File> prediction = new HashSet<File>();
     prediction.add(new File(this.testRoot, this.testRoot.getName() + "file"));
     testFileFilter
