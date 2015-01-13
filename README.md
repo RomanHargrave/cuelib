@@ -1,3 +1,6 @@
+Cuelib [![Build Status](https://travis-ci.org/RomanHargrave/cuelib.svg?branch=master)](https://travis-ci.org/RomanHargrave/cuelib)
+==================================================================================================================================
+
 This is a migrated copy of the cuelib google code project. As of some time between 2009 and 2010, it appears that cuelib
 has become unmaintained. Seeing as I need it in a project, I supposed that I would rehost it here, with the potential
 for applying fixes and updates.
