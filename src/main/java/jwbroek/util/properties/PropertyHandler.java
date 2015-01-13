@@ -23,23 +23,28 @@ import java.util.Properties;
 /**
  * <p>Interface for helper instances that can convert instances of other classes from and to Strings.
  * PropertyHandlers can be used to conveniently get and set Properties of types other than String.</p>
+ *
  * @author jwbroek
  */
-public interface PropertyHandler<T>
-{
-  /**
-   * Convert the value to a String that can be used in a {@link Properties} instance.
-   * @param value
-   * @return A conversion of the value to a String that can be used in a {@link Properties} instance.
-   */
-  public String toProperty(final T value);
-  
-  /**
-   * Convert the value from a {@link Properties} instance into an instance of the type of this
-   * PropertyHandler.
-   * @param value
-   * @return A conversion of the value from a {@link Properties} instance into an instance of the type
-   * of this PropertyHandler.
-   */
-  public T fromProperty(final String value);
+public interface PropertyHandler<T> {
+
+    /**
+     * Convert the value to a String that can be used in a {@link Properties} instance.
+     *
+     * @param value
+     *
+     * @return A conversion of the value to a String that can be used in a {@link Properties} instance.
+     */
+    public String toProperty(final T value);
+
+    /**
+     * Convert the value from a {@link Properties} instance into an instance of the type of this
+     * PropertyHandler.
+     *
+     * @param value
+     *
+     * @return A conversion of the value from a {@link Properties} instance into an instance of the type
+     * of this PropertyHandler.
+     */
+    public T fromProperty(final String value);
 }

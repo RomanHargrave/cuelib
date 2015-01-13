@@ -20,15 +20,19 @@ package jwbroek.util.properties;
 
 /**
  * Interface for PropertyHandler factories.
+ *
  * @author jwbroek
  */
-public interface PropertyHandlerFactory
-{
-  /**
-   * Get a PropertyHandler for the specified type.
-   * @param propertyType
-   * @return A PropertyHandler for the specified type.
-   * @throws UnsupportedOperationException When the specified type is not supported by this factory.
-   */
-  public <T> PropertyHandler<T> getPropertyHandler(Class<T> propertyType) throws UnsupportedOperationException;
+public interface PropertyHandlerFactory {
+
+    /**
+     * Get a PropertyHandler for the specified type.
+     *
+     * @param propertyType
+     *
+     * @return A PropertyHandler for the specified type.
+     *
+     * @throws UnsupportedOperationException When the specified type is not supported by this factory.
+     */
+    public <T> PropertyHandler<T> getPropertyHandler(Class<T> propertyType) throws UnsupportedOperationException;
 }

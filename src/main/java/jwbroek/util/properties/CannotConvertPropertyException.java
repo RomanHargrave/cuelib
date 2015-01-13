@@ -18,76 +18,58 @@
  */
 package jwbroek.util.properties;
 
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Method intended to be thrown when a {@link PropertyHandler} cannot convert to or from a
  * property.
+ *
  * @author jwbroek
  */
-public class CannotConvertPropertyException extends RuntimeException
-{
-  /**
-   * Generated UID to comply with the contract of {@linkplain java.io.Serializable}.
-   */
-  private static final long serialVersionUID = -8158507550259008115L;
-  /**
-   * The logger for this class.
-   */
-  private final static Logger logger = Logger.getLogger(CannotConvertPropertyException.class.getCanonicalName());
-  
-  /**
-   * Create a new CannotConvertPropertyException.
-   */
-  public CannotConvertPropertyException()
-  {
-    super();
-    CannotConvertPropertyException.logger.entering
-      (CannotConvertPropertyException.class.getCanonicalName(), "CannotConvertPropertyException()");
-    CannotConvertPropertyException.logger.exiting
-      (CannotConvertPropertyException.class.getCanonicalName(), "CannotConvertPropertyException()");
-  }
-  
-  /**
-   * Create a new CannotConvertPropertyException.
-   * @param message
-   */
-  public CannotConvertPropertyException(final String message)
-  {
-    super(message);
-    CannotConvertPropertyException.logger.entering
-      (CannotConvertPropertyException.class.getCanonicalName(), "CannotConvertPropertyException(String)", message);
-    CannotConvertPropertyException.logger.exiting
-      (CannotConvertPropertyException.class.getCanonicalName(), "CannotConvertPropertyException(String)");
-  }
+public class CannotConvertPropertyException extends RuntimeException {
 
-  /**
-   * Create a new CannotConvertPropertyException.
-   * @param message
-   * @param cause
-   */
-  public CannotConvertPropertyException(final String message, final Throwable cause)
-  {
-    super(message, cause);
-    CannotConvertPropertyException.logger.entering
-      ( CannotConvertPropertyException.class.getCanonicalName()
-      , "CannotConvertPropertyException(String,Throwable)"
-      , new Object [] {message, cause}
-      );
-    CannotConvertPropertyException.logger.exiting
-      (CannotConvertPropertyException.class.getCanonicalName(), "CannotConvertPropertyException(String,Throwable)");
-  }
+    /**
+     * Generated UID to comply with the contract of {@linkplain java.io.Serializable}.
+     */
+    private static final long serialVersionUID = -8158507550259008115L;
+    /**
+     * The logger for this class.
+     */
+    private final static Logger logger = LoggerFactory.getLogger(CannotConvertPropertyException.class);
 
-  /**
-   * Create a new CannotConvertPropertyException.
-   * @param cause
-   */
-  public CannotConvertPropertyException(final Throwable cause)
-  {
-    super(cause);
-    CannotConvertPropertyException.logger.entering
-      (CannotConvertPropertyException.class.getCanonicalName(), "CannotConvertPropertyException(Throwable)", cause);
-    CannotConvertPropertyException.logger.exiting
-      (CannotConvertPropertyException.class.getCanonicalName(), "CannotConvertPropertyException(Throwable)");
-  }
+    /**
+     * Create a new CannotConvertPropertyException.
+     */
+    public CannotConvertPropertyException() {
+        super();
+    }
+
+    /**
+     * Create a new CannotConvertPropertyException.
+     *
+     * @param message exception message
+     */
+    public CannotConvertPropertyException(final String message) {
+        super(message);
+    }
+
+    /**
+     * Create a new CannotConvertPropertyException.
+     *
+     * @param message exception message
+     * @param cause   exception cause
+     */
+    public CannotConvertPropertyException(final String message, final Throwable cause) {
+        super(message, cause);
+    }
+
+    /**
+     * Create a new CannotConvertPropertyException.
+     *
+     * @param cause exception cause
+     */
+    public CannotConvertPropertyException(final Throwable cause) {
+        super(cause);
+    }
 }

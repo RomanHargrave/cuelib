@@ -18,99 +18,74 @@
  */
 package jwbroek.util.properties;
 
-import java.io.File;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.sound.sampled.AudioFileFormat;
+import java.io.File;
 
 /**
  * Implementation of PropertyHandlerFactory that supports the various PropertyHandlers in
  * jwbroek.util.properties.
+ *
  * @author jwbroek
  */
-public class PropertyHandlerFactoryImpl implements PropertyHandlerFactory
-{
-  /**
-   * The logger for this class.
-   */
-  private final static Logger logger = Logger.getLogger(PropertyHandlerFactoryImpl.class.getCanonicalName());
-  /**
-   * The singleton instance of this class.
-   */
-  private final static PropertyHandlerFactoryImpl instance = new PropertyHandlerFactoryImpl();
-  
-  /**
-   * This constructor is only meant to be called by PropertyHandlerFactoryImpl itself, as
-   * PropertyHandlerFactoryImpl is a singleton class.
-   */
-  private PropertyHandlerFactoryImpl()
-  {
-    super();
-    PropertyHandlerFactoryImpl.logger.entering
-      (PropertyHandlerFactoryImpl.class.getCanonicalName(), "PropertyHandlerFactoryImpl()");
-    PropertyHandlerFactoryImpl.logger.exiting
-      (PropertyHandlerFactoryImpl.class.getCanonicalName(), "PropertyHandlerFactoryImpl()");
-  }
-  
-  /**
-   * Get an instance of PropertyHandlerFactoryImpl.
-   * @return An instance of PropertyHandlerFactoryImpl.
-   */
-  public static PropertyHandlerFactoryImpl getInstance()
-  {
-    PropertyHandlerFactoryImpl.logger.entering
-      (PropertyHandlerFactoryImpl.class.getCanonicalName(), "PropertyHandlerFactoryImpl.getInstance()");
-    PropertyHandlerFactoryImpl.logger.exiting
-      ( PropertyHandlerFactoryImpl.class.getCanonicalName()
-      , "PropertyHandlerFactoryImpl.getInstance()"
-      , PropertyHandlerFactoryImpl.instance
-      );
-    return PropertyHandlerFactoryImpl.instance;
-  }
-  
-  /**
-   * Get a PropertyHandler for the specified type.
-   * @param propertyType
-   * @return A PropertyHandler for the specified type.
-   * @throws UnsupportedOperationException When the specified type is not supported by this factory.
-   */
-  public <T> PropertyHandler<T> getPropertyHandler(Class<T> propertyType)
-    throws UnsupportedOperationException
-  {
-    PropertyHandlerFactoryImpl.logger.entering
-      (PropertyHandlerFactoryImpl.class.getCanonicalName(), "getPropertyHandler(Class<T>)", propertyType);
-    
-    final PropertyHandler result;
-    
-    if (propertyType.equals(AudioFileFormat.Type.class))
-    {
-      result = AudioFileFormatTypePropertyHandler.getInstance();
+public class PropertyHandlerFactoryImpl implements PropertyHandlerFactory {
+
+    /**
+     * The logger for this class.
+     */
+    private final static Logger logger = LoggerFactory.getLogger(PropertyHandlerFactory.class);
+    /**
+     * The singleton instance of this class.
+     */
+    private final static PropertyHandlerFactoryImpl instance = new PropertyHandlerFactoryImpl();
+
+    /**
+     * This constructor is only meant to be called by PropertyHandlerFactoryImpl itself, as
+     * PropertyHandlerFactoryImpl is a singleton class.
+     */
+    private PropertyHandlerFactoryImpl() {
+        super();
     }
-    else if (propertyType.equals(Boolean.class))
-    {
-      result = BooleanPropertyHandler.getInstance();
+
+    /**
+     * Get an instance of PropertyHandlerFactoryImpl.
+     *
+     * @return An instance of PropertyHandlerFactoryImpl.
+     */
+    public static PropertyHandlerFactoryImpl getInstance() {
+        return PropertyHandlerFactoryImpl.instance;
     }
-    else if (propertyType.equals(File.class))
-    {
-      result = FilePropertyHandler.getInstance();
+
+    /**
+     * Get a PropertyHandler for the specified type.
+     *
+     * @param propertyType
+     *
+     * @return A PropertyHandler for the specified type.
+     *
+     * @throws UnsupportedOperationException When the specified type is not supported by this factory.
+     */
+    public <T> PropertyHandler<T> getPropertyHandler(Class<T> propertyType) throws UnsupportedOperationException {
+
+        final PropertyHandler result;
+
+        if (propertyType.equals(AudioFileFormat.Type.class)) {
+            result = AudioFileFormatTypePropertyHandler.getInstance();
+        } else if (propertyType.equals(Boolean.class)) {
+            result = BooleanPropertyHandler.getInstance();
+        } else if (propertyType.equals(File.class)) {
+            result = FilePropertyHandler.getInstance();
+        } else if (propertyType.equals(Long.class)) {
+            result = LongPropertyHandler.getInstance();
+        } else {
+            final UnsupportedOperationException exception = new UnsupportedOperationException("Unsupported type: '" + propertyType.toString() + "'");
+            throw exception;
+        }
+
+        // Unsafe operation, but there is no way around this (apart from doing lots of safe casts in the "if" blocks).
+        return result;
     }
-    else if (propertyType.equals(Long.class))
-    {
-      result = LongPropertyHandler.getInstance();
-    }
-    else
-    {
-      final UnsupportedOperationException exception = new UnsupportedOperationException
-        ("Unsupported type: '" + propertyType.toString() + "'");
-      PropertyHandlerFactoryImpl.logger.throwing
-        (PropertyHandlerFactoryImpl.class.getCanonicalName(), "getPropertyHandler(Class<T>)", exception);
-      throw exception;
-    }
-    
-    PropertyHandlerFactoryImpl.logger.exiting
-      ( PropertyHandlerFactoryImpl.class.getCanonicalName(), "getPropertyHandler(Class<T>)", result);
-    // Unsafe operation, but there is no way around this (apart from doing lots of safe casts in the "if" blocks).
-    return result;
-  }
 
 }

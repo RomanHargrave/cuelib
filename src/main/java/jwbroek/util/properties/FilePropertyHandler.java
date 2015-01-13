@@ -18,74 +18,66 @@
  */
 package jwbroek.util.properties;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
 import java.util.Properties;
-import java.util.logging.Logger;
 
 /**
  * PropertyHandler for {@link File}s.
+ *
  * @author jwbroek
  */
-final public class FilePropertyHandler implements PropertyHandler<File>
-{
-  /**
-   * The logger for this class.
-   */
-  private final static Logger logger = Logger.getLogger(FilePropertyHandler.class.getCanonicalName());
-  /**
-   * The singleton instance of this class.
-   */
-  private final static FilePropertyHandler instance = new FilePropertyHandler();
-  
-  /**
-   * This constructor is only meant to be called by FilePropertyHandler itself, as
-   * FilePropertyHandler is a singleton class.
-   */
-  private FilePropertyHandler()
-  {
-    super();
-    FilePropertyHandler.logger.entering(FilePropertyHandler.class.getCanonicalName(), "FilePropertyHandler()");
-    FilePropertyHandler.logger.exiting(FilePropertyHandler.class.getCanonicalName(), "FilePropertyHandler()");
-  }
-  
-  /**
-   * Get an instance of this class.
-   * @return An instance of this class.
-   */
-  public static FilePropertyHandler getInstance()
-  {
-    FilePropertyHandler.logger.entering
-      (FilePropertyHandler.class.getCanonicalName(), "FilePropertyHandler.getInstance()");
-    FilePropertyHandler.logger.exiting
-      (FilePropertyHandler.class.getCanonicalName(), "FilePropertyHandler.getInstance()", FilePropertyHandler.instance);
-    return FilePropertyHandler.instance;
-  }
-  
-  /**
-   * Convert the value to a String that can be used in a {@link Properties} instance.
-   * @param value
-   * @return A conversion of the value to a string that can be used in a {@link Properties} instance.
-   */
-  public String toProperty(final File value)
-  {
-    FilePropertyHandler.logger.entering(FilePropertyHandler.class.getCanonicalName(), "toProperty(File)", value);
-    final String result = value.getPath();
-    FilePropertyHandler.logger.exiting
-      (FilePropertyHandler.class.getCanonicalName(), "toProperty(File)", result);
-    return result;
-  }
+final public class FilePropertyHandler implements PropertyHandler<File> {
 
-  /**
-   * Convert the value from a {@link Properties} instance into a File instance.
-   * @param value
-   * @return A conversion of the value from a {@link Properties} instance into a File instance.
-   */
-  public File fromProperty(final String value)
-  {
-    FilePropertyHandler.logger.entering(FilePropertyHandler.class.getCanonicalName(), "fromProperty(String)", value);
-    final File result = new File(value);
-    FilePropertyHandler.logger.exiting
-      (FilePropertyHandler.class.getCanonicalName(), "fromProperty(String)", result);
-    return result;
-  }
+    /**
+     * The logger for this class.
+     */
+    private final static Logger logger = LoggerFactory.getLogger(FilePropertyHandler.class);
+    /**
+     * The singleton instance of this class.
+     */
+    private final static FilePropertyHandler instance = new FilePropertyHandler();
+
+    /**
+     * This constructor is only meant to be called by FilePropertyHandler itself, as
+     * FilePropertyHandler is a singleton class.
+     */
+    private FilePropertyHandler() {
+        super();
+    }
+
+    /**
+     * Get an instance of this class.
+     *
+     * @return An instance of this class.
+     */
+    public static FilePropertyHandler getInstance() {
+        return FilePropertyHandler.instance;
+    }
+
+    /**
+     * Convert the value to a String that can be used in a {@link Properties} instance.
+     *
+     * @param value
+     *
+     * @return A conversion of the value to a string that can be used in a {@link Properties} instance.
+     */
+    public String toProperty(final File value) {
+        final String result = value.getPath();
+        return result;
+    }
+
+    /**
+     * Convert the value from a {@link Properties} instance into a File instance.
+     *
+     * @param value
+     *
+     * @return A conversion of the value from a {@link Properties} instance into a File instance.
+     */
+    public File fromProperty(final String value) {
+        final File result = new File(value);
+        return result;
+    }
 }
