@@ -22,109 +22,91 @@ import java.net.URL;
 import java.util.Properties;
 
 
-public class URLFrame implements ID3Frame
-{
-  // TODO Use proper URL.
-  private String additionalTypeInfo = "";
-  private String url;
-  private int totalFrameSize;
-  private CanonicalFrameType canonicalFrameType;
-  private Properties flags = new Properties();
-  
-  /**
-   * @return the flags
-   */
-  public Properties getFlags()
-  {
-    return flags;
-  }
+public class URLFrame implements ID3Frame {
 
-  public URLFrame(final CanonicalFrameType canonicalFrameType)
-  {
-    this.canonicalFrameType = canonicalFrameType;
-  }
-  
-  @Override
-  public String toString()
-  {
-    final StringBuilder builder = new StringBuilder();
-    builder .append("URL frame: ").append(this.canonicalFrameType.toString())
-            .append(' ').append(this.additionalTypeInfo)
-            .append(" [").append(this.totalFrameSize).append("]\n")
-            .append("Flags: ").append(this.flags.toString()).append('\n')
-            .append("URL: ").append(this.url)
-            ;
-    return builder.toString();
-  }
-  
-  /**
-   * 
-   * @param url
-   */
-  public void setUrl(final URL url)
-  {
-    this.url = url.toString();
-  }
-  
-  /**
-   * 
-   * @param url
-   */
-  public void setUrl(final String url)
-  {
-    this.url = url;
-  }
+    // TODO Use proper URL.
+    private String additionalTypeInfo = "";
+    private String url;
+    private int totalFrameSize;
+    private CanonicalFrameType canonicalFrameType;
+    private Properties flags = new Properties();
 
-  /**
-   * 
-   * @return
-   */
-  public String getUrl()
-  {
-    return this.url;
-  }
-  
-  /**
-   * @return the declaredSize
-   */
-  public int getTotalFrameSize()
-  {
-    return totalFrameSize;
-  }
+    /**
+     * @return the flags
+     */
+    public Properties getFlags() {
+        return flags;
+    }
 
-  /**
-   * @param totalFrameSize the totalFrameSize to set
-   */
-  public void setTotalFrameSize(final int totalFrameSize)
-  {
-    this.totalFrameSize = totalFrameSize;
-  }
-  
-  public CanonicalFrameType getCanonicalFrameType()
-  {
-    return this.canonicalFrameType;
-  }
+    public URLFrame(final CanonicalFrameType canonicalFrameType) {
+        this.canonicalFrameType = canonicalFrameType;
+    }
 
-  public void setCanonicalFrameType(final CanonicalFrameType canonicalFrameType)
-  {
-    this.canonicalFrameType = canonicalFrameType;
-  }
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("URL frame: ").append(this.canonicalFrameType.toString()).append(' ').append(this.additionalTypeInfo).append(" [").append(this.totalFrameSize).append("]\n").append("Flags: ").append(this.flags.toString()).append('\n').append("URL: ").append(this.url);
+        return builder.toString();
+    }
 
-  /**
-   * Get the additionalTypeInfo of this URLFrame.
-   * @return The additionalTypeInfo of this URLFrame.
-   */
-  public String getAdditionalTypeInfo()
-  {
-    return additionalTypeInfo;
-  }
+    /**
+     * @param url
+     */
+    public void setUrl(final URL url) {
+        this.url = url.toString();
+    }
 
-  /**
-   * Set the additionalTypeInfo of this URLFrame.
-   * @param additionalTypeInfo The additionalTypeInfo of this URLFrame.
-   */
-  public void setAdditionalTypeInfo(String additionalTypeInfo)
-  {
-    this.additionalTypeInfo = additionalTypeInfo;
-  }
+    /**
+     * @param url
+     */
+    public void setUrl(final String url) {
+        this.url = url;
+    }
+
+    /**
+     * @return
+     */
+    public String getUrl() {
+        return this.url;
+    }
+
+    /**
+     * @return the declaredSize
+     */
+    public int getTotalFrameSize() {
+        return totalFrameSize;
+    }
+
+    /**
+     * @param totalFrameSize the totalFrameSize to set
+     */
+    public void setTotalFrameSize(final int totalFrameSize) {
+        this.totalFrameSize = totalFrameSize;
+    }
+
+    public CanonicalFrameType getCanonicalFrameType() {
+        return this.canonicalFrameType;
+    }
+
+    public void setCanonicalFrameType(final CanonicalFrameType canonicalFrameType) {
+        this.canonicalFrameType = canonicalFrameType;
+    }
+
+    /**
+     * Get the additionalTypeInfo of this URLFrame.
+     *
+     * @return The additionalTypeInfo of this URLFrame.
+     */
+    public String getAdditionalTypeInfo() {
+        return additionalTypeInfo;
+    }
+
+    /**
+     * Set the additionalTypeInfo of this URLFrame.
+     *
+     * @param additionalTypeInfo The additionalTypeInfo of this URLFrame.
+     */
+    public void setAdditionalTypeInfo(String additionalTypeInfo) {
+        this.additionalTypeInfo = additionalTypeInfo;
+    }
 }
