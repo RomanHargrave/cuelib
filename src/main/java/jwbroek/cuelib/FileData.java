@@ -83,7 +83,7 @@ public class FileData {
     public List<Index> getAllIndices() {
         List<Index> allIndices = new ArrayList<Index>();
 
-        for (TrackData trackData : this.trackData) {
+        for (TrackData trackData : this.getTrackData()) {
             allIndices.addAll(trackData.getIndices());
         }
 
