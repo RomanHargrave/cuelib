@@ -316,7 +316,7 @@ public class TrackData {
         // Note: we have to pass all indices until we've found the right one, as we don't enforce that indices are sorted.
         // Normally, this shouldn't be a problem, as there are generally very few indices. (Only rarely more than 2).
         indexLoop:
-        for (Index index : this.indices) {
+        for (Index index : this.getIndices()) {
             if (index.getNumber() == number) {
                 result = index;
                 break indexLoop;  // No need to continue searching, so break out of the loop.
